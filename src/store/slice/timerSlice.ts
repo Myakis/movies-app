@@ -1,4 +1,6 @@
-import { AnyAction, createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { IDataTime } from './../../components/Setting/Setting';
 import { IInitialState } from '../../types/slice/timerSlices';
 
 const initialState: IInitialState = {
@@ -14,11 +16,13 @@ const initialState: IInitialState = {
   currentTime: null,
   initialTime: null,
   error: null,
+  numberSelectTag: 0,
 };
 
 export const initialApp = createAsyncThunk<boolean, undefined, { rejectValue: string }>(
   'timer/initialApp',
   async (_, { rejectWithValue }) => {
+    //Эмуляция подключения (В приложении не используюется данные с APi)
     const response = await fetch(`https://reqres.in/api/users/1`);
     if (!response || !response.ok) {
       return rejectWithValue('Некорректные данные');
@@ -35,12 +39,21 @@ const timerSlice = createSlice({
     selectTag(state, action: PayloadAction<number>) {
       state.currentTime = state.timeData[action.payload].time;
       state.initialTime = state.timeData[action.payload].time;
+      state.numberSelectTag = action.payload;
     },
     startTimer(state) {
       state.currentTime = state.currentTime! - 1;
     },
     restartTimer(state) {
       state.currentTime = state.initialTime;
+    },
+    changeDataTime(state, action: PayloadAction<IDataTime>) {
+      state.timeData = state.timeData.map(item => ({
+        ...item,
+        time: action.payload[item.title] < 60 ? action.payload[item.title] * 60 : 60 * 60,
+      }));
+      state.currentTime = state.timeData[state.numberSelectTag].time;
+      state.initialTime = state.timeData[state.numberSelectTag].time;
     },
   },
   extraReducers: builder => {
@@ -64,5 +77,5 @@ const timerSlice = createSlice({
   },
 });
 
-export const { selectTag, startTimer, restartTimer } = timerSlice.actions;
+export const { selectTag, startTimer, restartTimer, changeDataTime } = timerSlice.actions;
 export default timerSlice.reducer;

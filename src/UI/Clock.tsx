@@ -9,6 +9,9 @@ export const StartPauseButton = styled.div`
 export const TimerText = styled.h2`
   all: unset;
   font-size: 7rem;
+  @media (max-width: 567px) {
+    font-size: 4rem;
+  }
 `;
 
 export const ClockContainer = styled.button`
@@ -16,4 +19,7 @@ export const ClockContainer = styled.button`
   text-align: center;
   font-size: 2.5rem;
   color: black;
+  @media (max-width: 567px) {
+    font-size: 2rem;
+  }
 `;

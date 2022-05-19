@@ -1,7 +1,11 @@
 :root {
   --main: #5845c5;
   --primary: #5350d5;
-  --lightPrimary: #dbe9f6;
+  --lightPrimary: #dbe9f6ea;
+  /* --clock: #7fc3fa;
+  --clock: rgba(150, 212, 223, 0.96); */
+  --clock: rgba(123, 175, 224, 0.5);
+  /* --clock: rgba(145, 17, 49, 0.8); */
   --linear: linear-gradient(179deg, #176eb5, #d545d7);
 }
 
@@ -10,8 +14,18 @@
   margin: 0;
 }
 body {
+  font-family: 'Macondo', 'Noto Serif', sans-serif;
   min-height: 100vh;
   margin: 0;
   background: var(--linear) no-repeat;
   color: #fff;
+  overflow-x: hidden;
+}
+
+.setting {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  bottom: 0;
+  width: 100%;
 }

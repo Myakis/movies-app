@@ -9,4 +9,5 @@ export interface IInitialState {
   initialTime: number | null;
   initialProject: boolean;
   error: null | string;
+  numberSelectTag: number;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './spiner.scss';
+import './spinier.scss';
 
 const Preloader = () => {
   return (

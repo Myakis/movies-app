@@ -4,8 +4,8 @@ interface IPropsOuterC {
   progress: number;
 }
 export const OuterCircle = styled.div<IPropsOuterC>`
-  width: 29.5rem;
-  height: 29.5rem;
+  width: 99%;
+  height: 99%;
   background: var(--main);
   border-radius: 50%;
   display: grid;
@@ -17,9 +17,9 @@ export const OuterCircle = styled.div<IPropsOuterC>`
 `;
 
 export const InnerCircle = styled.div`
-  width: 28rem;
-  height: 28rem;
-  background: var(--lightPrimary);
+  width: 98%;
+  height: 98%;
+  background: var(--clock);
   border-radius: 50%;
   display: grid;
   place-items: center;

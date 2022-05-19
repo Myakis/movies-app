@@ -4,14 +4,14 @@ export const TagsContainer = styled.div`
   background-color: inherit;
   height: 3rem;
   margin: 0 auto;
-  width: 32rem;
+  max-width: 42rem;
   border-radius: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   @media (max-width: 567px) {
     width: 90%;
-    gap: 10px;
+    gap: 7px;
   }
 `;
 interface IPropsTAg {
@@ -28,4 +28,7 @@ export const Tag = styled.button<IPropsTAg>`
   border-radius: 2rem;
   font-size: 1rem;
   cursor: pointer;
+  @media (max-width: 567px) {
+    font-size: 0.8rem;
+  }
 `;
