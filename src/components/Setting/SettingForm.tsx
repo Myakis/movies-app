@@ -32,37 +32,49 @@ const FormSetting = () => {
     <FormWrapper>
       <H2>Настройки</H2>
       <Formik initialValues={initialValues} validate={formValidate} onSubmit={onSubmitHandler}>
-        <Form>
-          <FieldInput>
-            <label htmlFor='work'>Работа (мин)</label>
-            <Field id='work' autoComplete={'off'} max={60} min={1} name='Работа' type={'number'} />
-          </FieldInput>
-          <FieldInput>
-            <label htmlFor='shortBreak'>Короткий перерыв (мин)</label>
-            <Field
-              id='shortBreak'
-              autoComplete={'off'}
-              max={60}
-              min={1}
-              name='Короткий перерыв'
-              type={'number'}
-            />
-          </FieldInput>
-          <FieldInput>
-            <label htmlFor='longBreak'>Длинный перерыв (мин)</label>
-            <Field
-              id='longBreak'
-              autoComplete={'off'}
-              max={60}
-              min={1}
-              name='Длинный перерыв'
-              type={'number'}
-            />
-          </FieldInput>
-          <FieldInput>
-            <Button type='submit'>Сохранить</Button>{' '}
-          </FieldInput>
-        </Form>
+        {({ errors }) => (
+          <Form>
+            <FieldInput>
+              <label htmlFor='work'>Работа (мин)</label>
+              <Field
+                id='work'
+                className={errors.work && 'error'}
+                autoComplete={'off'}
+                max={60}
+                min={1}
+                name='Работа'
+                type={'number'}
+              />
+            </FieldInput>
+            <FieldInput>
+              <label htmlFor='shortBreak'>Короткий перерыв (мин)</label>
+              <Field
+                id='shortBreak'
+                className={errors.shortBreak && 'error'}
+                autoComplete={'off'}
+                max={60}
+                min={1}
+                name='Короткий перерыв'
+                type={'number'}
+              />
+            </FieldInput>
+            <FieldInput>
+              <label htmlFor='longBreak'>Длинный перерыв (мин)</label>
+              <Field
+                id='longBreak'
+                className={errors.longBreak && 'error'}
+                autoComplete={'off'}
+                max={60}
+                min={1}
+                name='Длинный перерыв'
+                type={'number'}
+              />
+            </FieldInput>
+            <FieldInput>
+              <Button type='submit'>Сохранить</Button>{' '}
+            </FieldInput>
+          </Form>
+        )}
       </Formik>
     </FormWrapper>
   );
